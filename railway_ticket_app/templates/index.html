@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Railway Ticket Booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>🚆 Railway Ticket Booking</h2>
+
+    <select id="train">
+        {% for no, t in trains.items() %}
+        <option value="{{ no }}">
+            {{ t.name }} ({{ t.from }} → {{ t.to }}) - ₹{{ t.fare }}
+        </option>
+        {% endfor %}
+    </select>
+
+    <input type="text" id="name" placeholder="Passenger Name">
+    <input type="number" id="age" placeholder="Age">
+
+    <input type="number" id="passengers" placeholder="No. of Passengers">
+
+    <select id="berth">
+        <option value="Lower">Lower Berth</option>
+        <option value="Middle">Middle Berth</option>
+        <option value="Upper">Upper Berth</option>
+    </select>
+
+    <button onclick="bookTicket()">Book Ticket</button>
+
+    <hr>
+
+    <input type="text" id="pnr" placeholder="Enter PNR">
+    <button onclick="viewTicket()">View Ticket</button>
+    <button onclick="cancelTicket()">Cancel Ticket</button>
+
+    <p id="result"></p>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
